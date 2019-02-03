@@ -1,0 +1,3 @@
+{
+  "plugins": ["jsx-control-statements","transform-react-jsx-source"]
+}

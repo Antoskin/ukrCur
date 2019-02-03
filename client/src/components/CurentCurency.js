@@ -36,7 +36,6 @@ class CurentCurency extends Component {
               }
             </ul>
           )
-
         }}
       </Query>
     );

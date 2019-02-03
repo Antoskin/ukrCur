@@ -17,6 +17,25 @@ const MoneyType = new GraphQLObjectType({
   }),
 });
 
+const moneyListType = new GraphQLObjectType({
+  name: 'MoneyList',
+  fields: () => ({
+    date: { type: GraphQLString },
+    bank: { type: GraphQLString },
+    baseCurrencyLit: { type: GraphQLString },
+    exchangeRate: { type: GraphQLList( DifferMoneyType ) }
+  }),
+});
+
+const DifferMoneyType = new GraphQLObjectType({
+  name: 'DiffMoney',
+  fields: () => ({
+    baseCurrency: { type: GraphQLString },
+    saleRateNB: { type: GraphQLString },
+    currency: { type: GraphQLString },
+  }),
+});
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: () => ({
@@ -25,6 +44,17 @@ const RootQuery = new GraphQLObjectType({
       resolve( parent, child ) {
         return axios
           .get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+          .then( res => res.data )
+      }
+    },
+    storyMoney: {
+      type: moneyListType,
+      args: {
+        date: { type: GraphQLString }
+      },
+      resolve( parent, args) {
+        return axios
+          .get('https://api.privatbank.ua/p24api/exchange_rates?json&date=' + args.date)
           .then( res => res.data )
       }
     }

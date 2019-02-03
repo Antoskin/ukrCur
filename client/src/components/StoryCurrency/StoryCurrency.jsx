@@ -57,21 +57,18 @@ class StoryCurrency extends Component {
           {({ loading, error, data }) => {
 
             if (loading) return 'loading...';
-            if (error) return `error: ${error}`;
+            if (error) return `Choose date`;
 
             const filterList = data.storyMoney.exchangeRate.filter( valut =>
-              valut.currency == 'EUR' || valut.currency == 'USD'
+              valut.currency === 'EUR' || valut.currency === 'USD'
             );
 
             return (
-              <div>
-                { data.storyMoney.date }
-                { data.storyMoney.baseCurrencyLit }
-                { data.storyMoney.bank }
+              <ul>
                 { filterList.map( (item, ind) => (
                   <li key={ind} className="list-group-item">{item.currency} = {item.saleRateNB}</li>
-                ) ) }
-              </div>
+                ))}
+              </ul>
             )
           }}
         </Query>
