@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "nodemon": "^1.18.9"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "name": "curency",
+  "version": "1.0.0",
+  "description": "value of UA money",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antoskin/ukrCur.git"
+  },
+  "author": "snt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antoskin/ukrCur/issues"
+  },
+  "homepage": "https://github.com/Antoskin/ukrCur#readme"
+}
