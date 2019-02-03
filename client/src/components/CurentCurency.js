@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 
 const QRY = gql`
@@ -13,6 +14,13 @@ const QRY = gql`
 `;
 
 class CurentCurency extends Component {
+  static propTypes = {
+    money: PropTypes.arrayOf(PropTypes.shape({
+      ccy: PropTypes.string,
+      sale: PropTypes.string,
+    }))
+  };
+
   render() {
     return (
       <Query query={QRY}>
